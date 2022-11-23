@@ -58,7 +58,7 @@ app.use(session({
   secret: 'kwqheKJJS!(@!@#123811kjqwe1(',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
+  //cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
 }));
 
 // Configure More Middleware

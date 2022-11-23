@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
   });
 
-router.post('/', {credentials: 'include'}, function(req, res, next) {
+router.post('/', function(req, res, next) {
     console.log(req.user);
     next();
   });
