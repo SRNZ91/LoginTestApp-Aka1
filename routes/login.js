@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../user');
-const passport = require('../app')(passport);
+const passporte = require('../app')(passport);
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
     next();
   });
 
-router.post('/', passport.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
+router.post('/', passporte.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
     console.log(req.user);
     res.redirect('/dashboard');
   });
