@@ -3,11 +3,11 @@ var router = express.Router();
 const User = require('../user');
 
 /* GET login page. */
-router.get('/', {credentials: 'include'}, function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
   });
 
-router.post('/', function(req, res, next) {
+router.post('/', {credentials: 'include'}, function(req, res, next) {
     console.log(req.user);
     next();
   });
