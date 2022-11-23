@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../user');
-const passporte = require('../app')(passport);
+require('../app')(passport);
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
