@@ -7,10 +7,15 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
   });
 
+router.post('/', function(req, res, next) {
+    console.log(req.user);
+    next();
+  });
+
 router.post('/', User.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
-  console.log(req.user)
-res.redirect('/dashboard');
-});
+    console.log(req.user);
+    res.redirect('/dashboard');
+  });
   
 
 module.exports = router;
