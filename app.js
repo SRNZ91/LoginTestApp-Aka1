@@ -73,9 +73,4 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.post('/login', passport.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
-  console.log(req.user)
-res.redirect('/dashboard');
-});
-
 module.exports = app;
