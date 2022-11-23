@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
   });
 
-router.post('/login', User.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
+router.post('/', User.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
   console.log(req.user)
 res.redirect('/dashboard');
 });
