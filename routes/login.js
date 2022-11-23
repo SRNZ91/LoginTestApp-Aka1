@@ -3,7 +3,7 @@ var router = express.Router();
 const User = require('../user');
 
 /* GET login page. */
-router.get('/', function(req, res, next) {
+router.get('/', {credentials: 'include'}, function(req, res, next) {
     res.render('login', { title: 'Express' });
   });
 
