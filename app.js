@@ -12,11 +12,7 @@ var secretRouter = require('./routes/secret');
 
 //Added dependencies
 
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var passport = require('passport');
 var connectEnsureLogin = require('connect-ensure-login');
-var User = require('./user.js');
 
 var app = express();
 
@@ -52,25 +48,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// Configure Sessions Middleware
-app.use(session({
-  secret: 'kwqheKJJS!(@!@#123811kjqwe1(',
-  resave: false,
-  saveUninitialized: true,
-  //cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
-}));
-
-// Configure More Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Passport Local Strategy
-passport.use(User.createStrategy());
-
-// To use with sessions
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 module.exports = app;
