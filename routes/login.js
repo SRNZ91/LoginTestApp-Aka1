@@ -22,8 +22,10 @@ router.use(passport.session());
 passport.use(User.createStrategy());
 
 // To use with sessions
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+module.exports = function(passport){
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
+};
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
@@ -40,4 +42,3 @@ router.post('/', passport.authenticate('local', { failureRedirect: '/' }),  func
   });
   
 
-module.exports = router;

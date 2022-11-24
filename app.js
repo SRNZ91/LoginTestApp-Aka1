@@ -13,6 +13,8 @@ var secretRouter = require('./routes/secret');
 //Added dependencies
 
 var connectEnsureLogin = require('connect-ensure-login');
+const passport = require('passport');
+require('./routes/login')(passport);
 
 var app = express();
 
@@ -29,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
-app.use('/dashboard', dashboardRouter);
+app.use('/dashboard', connectEnsureLogin.ensureLoggedIn(), dashboardRouter);
 app.use('/secret', connectEnsureLogin.ensureLoggedIn(), secretRouter);
 
 
