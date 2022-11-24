@@ -13,8 +13,6 @@ var secretRouter = require('./routes/secret');
 //Added dependencies
 
 var connectEnsureLogin = require('connect-ensure-login');
-const passport = require('passport');
-require('./routes/login')(passport);
 
 var app = express();
 
