@@ -36,7 +36,6 @@ router.post('/', function(req, res, next) {
   });
 
 router.post('/', passport.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
-    console.log(req.user);
     res.redirect('/dashboard');
   });
   
