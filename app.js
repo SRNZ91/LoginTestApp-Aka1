@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
-app.use('/dashboard', connectEnsureLogin.ensureLoggedIn(), dashboardRouter);
+app.use('/dashboard', dashboardRouter);
 app.use('/secret', connectEnsureLogin.ensureLoggedIn(), secretRouter);
 
 
