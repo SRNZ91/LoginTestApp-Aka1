@@ -18,17 +18,13 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(passport.initialize());
 router.use(passport.session());
 
+// Passport Local Strategy
+passport.use(User.createStrategy());
 
 // To use with sessions
-module.exports = function(passport) {
-  // serialize sessions
-  passport.serializeUser((user, cb) => cb(null, user.id));
-  passport.deserializeUser((id, cb) =>
-    User.load({ criteria: { _id: id } }, cb)
-    );
-    // Passport Local Strategy
-  passport.use(User.createStrategy());
-};
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 /* GET login page. */
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Express' });
@@ -44,3 +40,4 @@ router.post('/', passport.authenticate('local', { failureRedirect: '/' }),  func
   });
   
 
+module.exports = router;
